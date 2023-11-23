@@ -32,11 +32,32 @@
           background: #bb0000;
           color: white;
         }
-        </style>
+        #json-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Adjust the gap between items */
+        }
+
+        .product {
+            width: 300px; /* Adjust the width of each product card as needed */
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            margin-bottom: 10px; /* Add some spacing between image and text */
+        }
+    </style>
 
 </head>
 
   <body class="container-fluid">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Comedyspeed</a>
@@ -57,6 +78,56 @@
     </nav>
 
     <h1>Hello, world!</h1>
+
+    <h1>Store Items</h1>
+
+    <div id="json-container">
+        <!-- Store items will be displayed here -->
+    </div>
+
+    <script>
+        const githubUrl = 'https://raw.githubusercontent.com/okallo01/Comedyspeed/main/data/products.json';
+
+        fetch(githubUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                displayStoreItems(data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+        function displayStoreItems(data) {
+            const jsonContainer = document.getElementById('json-container');
+
+            // Loop through each item in the JSON array
+            data.forEach(item => {
+                // Create a new div for each item with the "product" class
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('product');
+
+                // Populate the div with information from the item
+                itemDiv.innerHTML = `
+                    <strong>Name:</strong> ${item.Name}<br>
+                    <img src="${item.Image}" alt="${item.Name}">
+                    <br>
+                    <a href="${item.Link}" target="_blank">
+                        <button>Buy Now</button>
+                    </a>
+                `;
+
+                // Append the new div to the container
+                jsonContainer.appendChild(itemDiv);
+            });
+        }
+    </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     
     <div class="row">
@@ -82,7 +153,7 @@
     </div>
     
 
-    <footer class="bg-info text-center text-lg-start fixed-bottom">
+    <footer class="bg-info text-center text-lg-start">
         <!-- Copyright -->
         <div class="text-center p-3">
             Copyright &copy;<script>document.write(new Date().getFullYear())</script>
