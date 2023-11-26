@@ -8,160 +8,74 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-        .fa {
-          padding: 20px;
-          font-size: 30px;
-          width: 70px;
-          text-align: center;
-          text-decoration: none;
-          margin: 5px 2px;
-          border-radius: 10px;
-        }
-        
-        .fa:hover {
-            opacity: 0.7;
-        }
-        
-        .fa-facebook {
-          background: #3B5998;
-          color: white;
-        }
-        .fa-youtube {
-          background: #bb0000;
-          color: white;
-        }
-        #json-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* Adjust the gap between items */
-        }
-
-        .product {
-            width: 300px; /* Adjust the width of each product card as needed */
-            border: 1px solid #ddd;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        img {
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 100%;
-            margin-bottom: 10px; /* Add some spacing between image and text */
-        }
-    </style>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="../JS/javascript.js"></script>
+    <!-- Mui -->
+    <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
 
 </head>
 
-  <body class="container-fluid">
+  <body class="mui-container-fluid">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Comedyspeed</a>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item btn btn-outline-light">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item btn btn-outline-light">
-                <a class="nav-link active" href="#">About</a>
-              </li>
-              <li class="nav-item btn btn-outline-light">
-                <a class="nav-link active" href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#productlist">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="#aboutus">About</a>
+                <a class="nav-item nav-link active" href="#contactus">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <h1>Hello, world!</h1>
-
-    <h1>Store Items</h1>
-
-    <div id="json-container">
+    <div class="container-fluid">
+        <h1 id="productlist">Store Products</h1>
+    </div>
+    
+    <br>
+    <div id="json-container" class="container-fluid">
         <!-- Store items will be displayed here -->
     </div>
 
-    <script>
-        const githubUrl = 'https://raw.githubusercontent.com/okallo01/Comedyspeed/main/data/products.json';
-
-        fetch(githubUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                displayStoreItems(data);
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-
-        function displayStoreItems(data) {
-            const jsonContainer = document.getElementById('json-container');
-
-            // Loop through each item in the JSON array
-            data.forEach(item => {
-                // Create a new div for each item with the "product" class
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('product');
-
-                // Populate the div with information from the item
-                itemDiv.innerHTML = `
-                    <strong>Name:</strong> ${item.Name}<br>
-                    <img src="${item.Image}" alt="${item.Name}">
-                    <br>
-                    <a href="${item.Link}" target="_blank">
-                        <button>Buy Now</button>
-                    </a>
-                `;
-
-                // Append the new div to the container
-                jsonContainer.appendChild(itemDiv);
-            });
-        }
-    </script>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <hr>
     
-    <div class="row">
-        <div class="container-fluid col">
+    <br>
+    <div class="container-fluid" id="aboutus">
         <h3>About us</h3>
         <p>Just me, myself and I, exploring the universe of 
             unknownment. I have a heart of love and an interest
-             of lorem ipsum and mauris neque quam blog. I want
-              to share my world with you. Praesent tincidunt sed
-               tellus ut rutrum. Sed vitae justo condimentum,
+                of lorem ipsum and mauris neque quam blog. I want
+                to share my world with you. Praesent tincidunt sed
+                tellus ut rutrum. Sed vitae justo condimentum,
                 porta lectus vitae, ultricies congue gravida
-                 diam non fringilla. Praesent tincidunt sed tellus
-                  ut rutrum. Sed vitae justo condimentum, porta lectus
-                   vitae, ultricies congue gravida diam non fringilla.</p>
-        </div>
-        <div class="container-fluid col">
-            <h3>Contact</h3>
-            <p>We are available on social media.</p>
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-youtube"></a>
-        </div>
-
+                    diam non fringilla. Praesent tincidunt sed tellus
+                    ut rutrum. Sed vitae justo condimentum, porta lectus
+                    vitae, ultricies congue gravida diam non fringilla.</p>
     </div>
+
+    <br>
+    <div class="container-fluid" id="contactus">
+        <h3>Contact</h3>
+        <p>We are available on social media.</p>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-youtube"></a>
+    </div>
+    <br>
     
 
-    <footer class="bg-info text-center text-lg-start">
+    <footer class="bg-light text-center text-lg-start">
         <!-- Copyright -->
         <div class="text-center p-3">
-            Copyright &copy;<script>document.write(new Date().getFullYear())</script>
+            Comedyspeed Copyright &copy;<script>document.write(new Date().getFullYear())</script>
         </div>
     
         <!-- Copyright -->
     </footer>
-
     
 </body>
 </html>

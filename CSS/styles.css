@@ -1,0 +1,45 @@
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 70px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 10px;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  .fa-youtube {
+    background: #bb0000;
+    color: white;
+  }
+  #json-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* Adjust the gap between items */
+  }
+
+  .product {
+      width: 320px; /* Adjust the width of each product card as needed */
+      border: 1px solid #ddd;
+      padding: 10px;
+      box-sizing: border-box;
+  }
+
+  img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      margin-bottom: 20px; /* Add some spacing between image and text */
+  }
+
+  /* mui */
+  
