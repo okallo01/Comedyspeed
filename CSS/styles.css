@@ -28,7 +28,7 @@
 
   .product {
       width: 320px; /* Adjust the width of each product card as needed */
-      border: 1px solid #ddd;
+      /* border: 1px solid #ddd; */
       padding: 10px;
       box-sizing: border-box;
   }
